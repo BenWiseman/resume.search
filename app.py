@@ -190,6 +190,7 @@ def main():
                                         resume_text=res["text"],
                                         query=job_description,
                                         model="gpt-4o",
+                                        api_key=st.session_state.api_key,
                                         tokens=max_tokens
                                     )
                                 except Exception as e:
