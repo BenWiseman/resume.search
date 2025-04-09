@@ -207,13 +207,12 @@ def main():
 
     # ----- Results Tab -----
     with results_tab:
-        st.markdown("### Results")
+        st.markdown("### Search Results:")
         if "search_results" not in st.session_state or not st.session_state.search_results:
-            st.info("No search results yet. Please run a query in the Query tab.")
+            st.warning("No search results yet. Please run a query in the Query tab.")
         else:
             results = st.session_state.search_results
             df = pd.DataFrame(results)
-            st.subheader("Top Matching Resumes")
             st.markdown("Double click on the summary text cell to view the resume summary.")
             st.dataframe(df[["file", "summary"]])
             
