@@ -107,7 +107,7 @@ def main():
 
         st.markdown("(You can find your API key in your [OpenAI account settings](https://platform.openai.com/api-keys).)")
         default_api_key = os.environ.get("OPENAI_API_KEY", "")
-        api_key_input = st.text_input("OpenAI API Key:", value=default_api_key if default_api_key else "", disabled=False)
+        api_key_input = st.text_input("OpenAI API Key:", value=default_api_key if default_api_key else "", disabled=False, type="password")
         #saving api key to session state
         if api_key_input:
             st.session_state.api_key = api_key_input
