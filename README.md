@@ -3,6 +3,8 @@
 View the App here:
 [https://resumesearch.streamlit.app/](https://resumesearch.streamlit.app/)
 
+![Screenshot](images/Screenshot.png)
+
 This is a simple streamlit app designed to:
 
 1. Read through a collection of uploded resumes
