@@ -92,7 +92,9 @@ def parse_file(file_obj, filename):
 
 # ----- Main App -----
 def main():
-    st.title("Resume Searcher")
+    st.image("https://guddge.com/wp-content/uploads/2023/11/logo_final_blue-1.png?w=250&h=70")
+    st.title("Resume Search")
+    st.markdown("Automatically search resumes against a job description. [Provided by Guddge LLC](https://guddge.com)")
 
     # Create tabs for navigation
     setup_tab, query_tab, results_tab = st.tabs(["Setup", "Query", "Results"])
@@ -101,9 +103,9 @@ def main():
     with setup_tab:
         #st.header("## Setup: Upload and Embed Resumes")
 
-        st.markdown("### Insert your OpenAI API key")
+        st.markdown("### 1. Insert OpenAI API key")
 
-        st.markdown("(You can find your API key in your OpenAI account settings.)")
+        st.markdown("(You can find your API key in your [OpenAI account settings](https://platform.openai.com/api-keys).)")
         default_api_key = os.environ.get("OPENAI_API_KEY", "")
         api_key_input = st.text_input("OpenAI API Key:", value=default_api_key if default_api_key else "", disabled=False)
         #saving api key to session state
@@ -112,7 +114,7 @@ def main():
 
         st.divider()
 
-        st.markdown("### Upload your resume files")
+        st.markdown("### 2. Upload resumes")
 
         st.markdown("supported types: **.docx**, **.pdf**, **.txt**, **.json**) then press 'Parse & Embed Resumes'.")
         uploaded_files = st.file_uploader("Select resume files", type=["docx", "pdf", "txt", "json"], accept_multiple_files=True)
@@ -150,13 +152,13 @@ def main():
                             vector_db.add_documents(embeddings_array, resume_docs)
                             st.session_state.vector_db = vector_db
                             st.session_state.resume_docs = resume_docs
-                            st.success("Vector DB created in memory!")
+                            st.success("Resumes parsed successfully!")
                         except Exception as e:
                             st.error(f"Embedding failed: {e}")
 
     # ----- Query Tab -----
     with query_tab:
-        st.header("Query: Search Resumes")
+        st.markdown("### 3. Search Resumes")
         if "vector_db" not in st.session_state:
             st.warning("Please complete the Setup first by parsing and embedding resumes.")
         else:
@@ -205,7 +207,7 @@ def main():
 
     # ----- Results Tab -----
     with results_tab:
-        st.header("Results")
+        st.markdown("### Results")
         if "search_results" not in st.session_state or not st.session_state.search_results:
             st.info("No search results yet. Please run a query in the Query tab.")
         else:
