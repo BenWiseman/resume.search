@@ -1,0 +1,7 @@
+faiss_cpu==1.10.0
+numpy==2.0.2
+openai==1.72.0
+pandas==2.2.3
+pdfminer_six==20250327
+python_docx==1.1.2
+streamlit==1.44.1
